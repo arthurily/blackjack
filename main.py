@@ -26,9 +26,9 @@ def dealCards(deck, playerHand, dealerHand):
         playerHand.append(deck.pop(deck.index(random.choice(deck))))
         dealerHand.append(deck.pop(deck.index(random.choice(deck))))
 
-def PlayerHit(deck, playerHand):
+def playerHit(deck, playerHand):
     if not deck:
-        print("No more cards left in the deck!")
+        print("no more cards left in the deck!")
         return True
 
     newCard = random.choice(deck)
@@ -36,17 +36,17 @@ def PlayerHit(deck, playerHand):
     deck.remove(newCard)
     playerSum = calculateSum(playerHand)
 
-    print(f"Player's hand: {playerHand} (Total: {playerSum})")
+    print(f"player's hand: {playerHand} (total: {playerSum})")
 
     if playerSum > 21:
-        print("Bust! You lose!")
+        print("bust! You lose!")
         return True
     return False
 
-def DealerHit(deck, dealerHand):
+def dealerHit(deck, dealerHand):
     while calculateSum(dealerHand) < 17:
         if not deck:
-            print("No more cards left in the deck!")
+            print("no more cards left in the deck!")
             return True
 
         newCard = random.choice(deck)
@@ -54,10 +54,10 @@ def DealerHit(deck, dealerHand):
         deck.remove(newCard)
 
     dealerSum = calculateSum(dealerHand)
-    print(f"Dealer's hand: {dealerHand} (Total: {dealerSum})")
+    print(f"dealer's hand: {dealerHand} (total: {dealerSum})")
 
     if dealerSum > 21:
-        print("Dealer busts! You win!")
+        print("dealer busts! you win!")
         return True
     return False
 
@@ -71,23 +71,23 @@ def playOneGame():
     playerSum = calculateSum(playerHand)
     dealerSum = calculateSum(dealerHand)
 
-    print(f"Player's hand: {playerHand} (Total: {playerSum})")
-    print(f"Dealer's hand: {dealerHand[0]} and a hidden card")
+    print(f"player's hand: {playerHand} (total: {playerSum})")
+    print(f"dealer's hand: {dealerHand[0]} and a hidden card")
 
     # Initial blackjack check
     if playerSum == 21 and dealerSum == 21:
-        print("Both you and the dealer have blackjack! It's a tie!")
+        print("both you and the dealer have blackjack! it's a tie!")
         return
     elif playerSum == 21:
-        print("Player has blackjack! You win!")
+        print("you have blackjack! you win!")
         return
     elif dealerSum == 21:
-        print("Dealer has blackjack! You lose!")
+        print("dealer has blackjack! You lose!")
         return
 
     # Player turn
     while True:
-        action = input("\nDo you want to hit (h) or stand (s)? ").lower()
+        action = input("\ndo you want to hit (h) or stand (s)? ").lower()
         if action == 'h':
             if PlayerHit(deck, playerHand):
                 return
@@ -98,22 +98,22 @@ def playOneGame():
             playerSum = calculateSum(playerHand)
             dealerSum = calculateSum(dealerHand)
 
-            print(f"\nFinal hands:\n  Player: {playerHand} (Total: {playerSum})\n  Dealer: {dealerHand} (Total: {dealerSum})")
+            print(f"\nfinal hands:\n  you: {playerHand} (total: {playerSum})\n  dealer: {dealerHand} (total: {dealerSum})")
 
             if playerSum > dealerSum:
-                print("\nYou win!")
+                print("\nyou win!")
             elif playerSum < dealerSum:
-                print("\nYou lose!")
+                print("\nyou lose")
             else:
-                print("\nIt's a tie!")
+                print("\nit's a tie!")
             return
         else:
-            print("\nInvalid input, please enter 'h' or 's'.")
+            print("\ninvalid input, please enter 'h' or 's'.")
 
 
 while True:
     playOneGame()
-    again = input("\nDo you want to play again? (y/n): ").lower()
+    again = input("\ndo you want to play again? (y/n): ").lower()
     if again != 'y':
-        print("Thanks for playing!")
+        print("thanks for playing!")
         break
