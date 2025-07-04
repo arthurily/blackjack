@@ -74,7 +74,7 @@ def playOneGame():
     print(f"player's hand: {playerHand} (total: {playerSum})")
     print(f"dealer's hand: {dealerHand[0]} and a hidden card")
 
-    # Initial blackjack check
+
     if playerSum == 21 and dealerSum == 21:
         print("\nboth you and the dealer have blackjack! it's a tie!")
         return
@@ -85,7 +85,7 @@ def playOneGame():
         print("\ndealer has blackjack! You lose!")
         return
 
-    # Player turn
+  
     while True:
         action = input("\ndo you want to hit (h) or stand (s)? ").lower()
         if action == 'h':
@@ -110,10 +110,42 @@ def playOneGame():
         else:
             print("\ninvalid input, please enter 'h' or 's'.")
 
+def calcStrategy(playerHand, dealerHand):
+    playerSum = calculateSum(playerHand)
+    dealerCard = dealerHand[0]
+
+    if playerSum < 8 and playerSum > 5:
+        return 'hit'
+    elif playerSum == 9:
+        if dealerCard in [3, 4, 5, 6]:
+            return 'double'
+        else:
+            return 'hit'
+    elif playerSum == 10:
+        if dealerCard in [2, 3, 4, 5, 6, 7, 8, 9]:
+            return 'double'
+        else:
+            return 'hit'
+    elif playerSum == 11:
+        return 'double'
+    elif playerSum == 12:
+        if dealerCard in [4, 5, 6]:
+            return 'stand'
+        else:
+            return 'hit'
+    elif playerSum in [13, 14, 15, 16]:
+        if dealerCard in [2, 3, 4, 5, 6]:
+            return 'stand'
+        else:
+            return 'hit'
+    else:
+        return 'stand'
+
+        
 
 while True:
     playOneGame()
-    again = input("\ndo you want to play again? (y/n): ").lower()
+    again = input("\ndo you want to play again? (y/n): ")
     if again != 'y':
         print("thanks for playing!")
         break
