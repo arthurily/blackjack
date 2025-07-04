@@ -89,10 +89,10 @@ def playOneGame():
     while True:
         action = input("\ndo you want to hit (h) or stand (s)? ").lower()
         if action == 'h':
-            if PlayerHit(deck, playerHand):
+            if playerHit(deck, playerHand):
                 return
         elif action == 's':
-            if DealerHit(deck, dealerHand):
+            if dealerHit(deck, dealerHand):
                 return
 
             playerSum = calculateSum(playerHand)
