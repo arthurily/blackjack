@@ -6,7 +6,7 @@ def createDeck():
 def calculateSum(hand):
     total = 0
     aces = 0
-    
+
     for card in hand:
         if card in ['J', 'Q', 'K']:
             total += 10
