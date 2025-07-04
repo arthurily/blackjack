@@ -28,7 +28,7 @@ def dealCards(deck, playerHand, dealerHand):
 
 def playerHit(deck, playerHand):
     if not deck:
-        print("no more cards left in the deck!")
+        print("\nno more cards left in the deck!")
         return True
 
     newCard = random.choice(deck)
@@ -39,14 +39,14 @@ def playerHit(deck, playerHand):
     print(f"player's hand: {playerHand} (total: {playerSum})")
 
     if playerSum > 21:
-        print("bust! You lose!")
+        print("\nbust! you lose!")
         return True
     return False
 
 def dealerHit(deck, dealerHand):
     while calculateSum(dealerHand) < 17:
         if not deck:
-            print("no more cards left in the deck!")
+            print("\nno more cards left in the deck!") #ts is actually impossible btw
             return True
 
         newCard = random.choice(deck)
@@ -57,7 +57,7 @@ def dealerHit(deck, dealerHand):
     print(f"dealer's hand: {dealerHand} (total: {dealerSum})")
 
     if dealerSum > 21:
-        print("dealer busts! you win!")
+        print("\ndealer busts! you win!")
         return True
     return False
 
@@ -76,13 +76,13 @@ def playOneGame():
 
     # Initial blackjack check
     if playerSum == 21 and dealerSum == 21:
-        print("both you and the dealer have blackjack! it's a tie!")
+        print("\nboth you and the dealer have blackjack! it's a tie!")
         return
     elif playerSum == 21:
-        print("you have blackjack! you win!")
+        print("\nyou have blackjack! you win!")
         return
     elif dealerSum == 21:
-        print("dealer has blackjack! You lose!")
+        print("\ndealer has blackjack! You lose!")
         return
 
     # Player turn
