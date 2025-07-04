@@ -8,7 +8,7 @@ dealerHand = []
 playerSum = 0
 dealerSum = 0
 
-def dealCard():
+def playRound():
     card1 = random.choice(deck)
     playerHand.append(card1)
     deck.remove(card1)
@@ -28,8 +28,7 @@ def dealCard():
     playerSum = calculateSum(playerHand)
     dealerSum = calculateSum(dealerHand)
 
-    print(f"Player's hand: {playerHand} your total is: {playerSum}" )
-    print(f"Dealer's hand: {dealerHand[0]} and a hidden card")
+
 
 def calculateSum(hand):
     total = 0
