@@ -87,13 +87,14 @@ def playOneGame():
 
   
     while True:
-        action = input("\ndo you want to hit (h) or stand (s)? ").lower()
+        action = input("\ndo you want to hit (h), stand (s), or ask the bot (?)? ").lower()
         if action == 'h':
             if playerHit(deck, playerHand):
                 return
         elif action == 's':
             if dealerHit(deck, dealerHand):
                 return
+        
 
             playerSum = calculateSum(playerHand)
             dealerSum = calculateSum(dealerHand)
@@ -107,6 +108,11 @@ def playOneGame():
             else:
                 print("\nit's a tie!")
             return
+        
+        elif action == '?':
+            suggestedAction = calcStrategy(playerHand, dealerHand)
+            print(f"\nbasic strategy suggest you: {suggestedAction}")
+
         else:
             print("\ninvalid input, please enter 'h' or 's'.")
 
